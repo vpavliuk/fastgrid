@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		0EB3E0B22C6535B600C21217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3E0B12C6535B600C21217 /* AppDelegate.swift */; };
 		0EB3E0B42C6535B600C21217 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3E0B32C6535B600C21217 /* SceneDelegate.swift */; };
-		0EB3E0B62C6535B600C21217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3E0B52C6535B600C21217 /* ViewController.swift */; };
 		0EB3E0B92C6535B600C21217 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3E0B82C6535B600C21217 /* Base */; };
 		0EB3E0BB2C6535B800C21217 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3E0BA2C6535B800C21217 /* Assets.xcassets */; };
 		0EB3E0BE2C6535B800C21217 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3E0BD2C6535B800C21217 /* Base */; };
+		0EB3E0C82C65362600C21217 /* ImageGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3E0C52C65362600C21217 /* ImageGridViewController.swift */; };
+		0EB3E0C92C65362600C21217 /* IMG_8526.HEIC in Resources */ = {isa = PBXBuildFile; fileRef = 0EB3E0C62C65362600C21217 /* IMG_8526.HEIC */; };
+		0EB3E0CA2C65362600C21217 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3E0C72C65362600C21217 /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0EB3E0AE2C6535B600C21217 /* fastgrid-uicollectionview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fastgrid-uicollectionview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB3E0B12C6535B600C21217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB3E0B32C6535B600C21217 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0EB3E0B52C6535B600C21217 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0EB3E0B82C6535B600C21217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0EB3E0BA2C6535B800C21217 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EB3E0BD2C6535B800C21217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EB3E0BF2C6535B800C21217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EB3E0C52C65362600C21217 /* ImageGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGridViewController.swift; sourceTree = "<group>"; };
+		0EB3E0C62C65362600C21217 /* IMG_8526.HEIC */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_8526.HEIC; sourceTree = "<group>"; };
+		0EB3E0C72C65362600C21217 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		0EB3E0B02C6535B600C21217 /* fastgrid-uicollectionview */ = {
 			isa = PBXGroup;
 			children = (
+				0EB3E0C72C65362600C21217 /* ImageCell.swift */,
+				0EB3E0C52C65362600C21217 /* ImageGridViewController.swift */,
+				0EB3E0C62C65362600C21217 /* IMG_8526.HEIC */,
 				0EB3E0B12C6535B600C21217 /* AppDelegate.swift */,
 				0EB3E0B32C6535B600C21217 /* SceneDelegate.swift */,
-				0EB3E0B52C6535B600C21217 /* ViewController.swift */,
 				0EB3E0B72C6535B600C21217 /* Main.storyboard */,
 				0EB3E0BA2C6535B800C21217 /* Assets.xcassets */,
 				0EB3E0BC2C6535B800C21217 /* LaunchScreen.storyboard */,
@@ -126,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB3E0BB2C6535B800C21217 /* Assets.xcassets in Resources */,
+				0EB3E0C92C65362600C21217 /* IMG_8526.HEIC in Resources */,
 				0EB3E0BE2C6535B800C21217 /* Base in Resources */,
 				0EB3E0B92C6535B600C21217 /* Base in Resources */,
 			);
@@ -138,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EB3E0B62C6535B600C21217 /* ViewController.swift in Sources */,
+				0EB3E0C82C65362600C21217 /* ImageGridViewController.swift in Sources */,
 				0EB3E0B22C6535B600C21217 /* AppDelegate.swift in Sources */,
 				0EB3E0B42C6535B600C21217 /* SceneDelegate.swift in Sources */,
+				0EB3E0CA2C65362600C21217 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
