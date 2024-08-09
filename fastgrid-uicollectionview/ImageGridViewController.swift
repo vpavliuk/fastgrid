@@ -23,6 +23,7 @@ final class ImageGridViewController: UIViewController {
     private let spacing: CGFloat = 2.0
     private let originalImageAspectRatio = 0.75
     private var tileSize: CGFloat!
+    private let thumbnailQueue = DispatchQueue(label: "com.thumbnail-generation", qos: .userInitiated, attributes: .concurrent)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,9 +99,9 @@ extension ImageGridViewController: UICollectionViewDelegate {
         if let cachedImage = getCachedThumbnail(at: itemIndex) {
             cell.configure(with: cachedImage)
         } else {
-            let thumbnailWidth = tileSize!
-            let thumbnailHeight = thumbnailWidth / originalImageAspectRatio
-            originalImage.prepareThumbnail(of: CGSize(width: thumbnailWidth, height: thumbnailHeight)) { [weak self] thumbnail in
+            let thumbnailWidth = Int(tileSize!)
+            let thumbnailHeight = Int(tileSize! / originalImageAspectRatio)
+            prepareThumbnail(image: originalImage, targetWidth: thumbnailWidth, targetHeight: thumbnailHeight) { [weak self] thumbnail in
                 guard let self else { return }
                 guard let thumbnail else { return }
                 setCachedThumbnail(thumbnail, at: itemIndex)
@@ -145,5 +146,33 @@ extension ImageGridViewController {
             sectionProvider: sectionProvider,
             configuration: config
         )
+    }
+
+    private func prepareThumbnail(image: UIImage, targetWidth: Int, targetHeight: Int, completion: @escaping (_ thumbnail: UIImage?) -> Void) {
+        thumbnailQueue.async { [weak self] in
+            guard let self else {
+                completion(nil)
+                return
+            }
+            let cgImage = originalImage.cgImage!
+            let thumbnailBytesPerRow = 4 * targetHeight
+            guard let context = CGContext(
+                data: nil,
+                width: targetHeight,
+                height: targetWidth,
+                bitsPerComponent: cgImage.bitsPerComponent,
+                bytesPerRow: thumbnailBytesPerRow,
+                space: cgImage.colorSpace!,
+                bitmapInfo: cgImage.alphaInfo.rawValue
+            ) else {
+                completion(nil)
+                return
+            }
+
+            context.draw(cgImage, in: CGRect(x: 0, y: 0, width: targetHeight, height: targetWidth))
+            let thumbnailCGImage = context.makeImage()!
+            let thumbnail = UIImage(cgImage: thumbnailCGImage, scale: scale, orientation: image.imageOrientation)
+            completion(thumbnail)
+        }
     }
 }
