@@ -14,7 +14,7 @@ final class ImageCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true

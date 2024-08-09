@@ -101,6 +101,8 @@ extension ImageGridViewController: UICollectionViewDelegate {
         if let cachedImage = getCachedThumbnail(at: itemIndex) {
             cell.configure(with: cachedImage)
         } else {
+            cell.configure(with: originalImage)
+
             let thumbnailWidth = Int(tileSize!) * Int(scale)
             let thumbnailHeight = Int(tileSize! / originalImageAspectRatio) * Int(scale)
             prepareThumbnail(image: originalImage, targetWidth: thumbnailWidth, targetHeight: thumbnailHeight) { [weak self] thumbnail in
