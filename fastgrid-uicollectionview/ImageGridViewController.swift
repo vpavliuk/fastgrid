@@ -23,7 +23,7 @@ final class ImageGridViewController: UIViewController {
     private let spacing: CGFloat = 2.0
     private let originalImageAspectRatio = 0.75
     private var tileSize: CGFloat!
-    private let thumbnailQueue = DispatchQueue(label: "com.thumbnail-generation", qos: .userInitiated, attributes: .concurrent)
+    private let thumbnailQueue = DispatchQueue(label: "com.thumbnail-generation", qos: .userInteractive, attributes: .concurrent)
 
     override func viewDidLoad() {
         super.viewDidLoad()
