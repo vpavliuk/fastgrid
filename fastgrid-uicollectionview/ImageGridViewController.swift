@@ -43,6 +43,8 @@ final class ImageGridViewController: UIViewController {
         let totalHorizontalSpacing = spacing * CGFloat(horizontalSpacingsCount)
         return round((totalWidth - totalHorizontalSpacing) / CGFloat(columnCount))
     }
+
+    private lazy var scale: CGFloat = view.window!.windowScene!.screen.scale
 }
 
 extension ImageGridViewController {
@@ -99,8 +101,8 @@ extension ImageGridViewController: UICollectionViewDelegate {
         if let cachedImage = getCachedThumbnail(at: itemIndex) {
             cell.configure(with: cachedImage)
         } else {
-            let thumbnailWidth = Int(tileSize!)
-            let thumbnailHeight = Int(tileSize! / originalImageAspectRatio)
+            let thumbnailWidth = Int(tileSize!) * Int(scale)
+            let thumbnailHeight = Int(tileSize! / originalImageAspectRatio) * Int(scale)
             prepareThumbnail(image: originalImage, targetWidth: thumbnailWidth, targetHeight: thumbnailHeight) { [weak self] thumbnail in
                 guard let self else { return }
                 guard let thumbnail else { return }
